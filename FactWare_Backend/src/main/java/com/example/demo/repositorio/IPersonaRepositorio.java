@@ -1,5 +1,8 @@
 package com.example.demo.repositorio;
 
-public interface IPersonaRepositorio {
+import com.example.demo.modelo.Persona;
+import org.springframework.data.repository.CrudRepository;
+
+public interface IPersonaRepositorio extends CrudRepository<Persona, Long>{
 
 }

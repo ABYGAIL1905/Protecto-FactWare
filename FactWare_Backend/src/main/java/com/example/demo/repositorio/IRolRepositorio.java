@@ -1,5 +1,8 @@
 package com.example.demo.repositorio;
 
-public interface IRolRepositorio {
+import com.example.demo.modelo.Rol;
+import org.springframework.data.repository.CrudRepository;
+
+public interface IRolRepositorio extends CrudRepository<Rol, Long>{
 
 }

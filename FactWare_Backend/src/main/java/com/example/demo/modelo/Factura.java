@@ -34,6 +34,6 @@ public class Factura implements Serializable{
 	 @Column (name = "fecha")
 	private Date fecha;
 	 @ManyToOne
-	  @JoinColumn (name = "id_usuario", referencedColumnName = "id_usuario")
-	    private Usuario usuario;
+	  @JoinColumn (name = "id_persona", referencedColumnName = "id_persona")
+	    private Persona persona;
 }

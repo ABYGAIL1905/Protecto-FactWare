@@ -50,5 +50,15 @@ public class Persona implements Serializable{
 	
 	 @OneToMany(mappedBy = "persona")
 	    List<Usuario> usuario;
+         
+         @OneToMany(mappedBy = "persona")
+	    List<Factura> factura;
+         
+         public Persona(){}
+         
+         public Persona(Long id){
+             super();
+             this.id_persona=id;
+         }
 	
 }

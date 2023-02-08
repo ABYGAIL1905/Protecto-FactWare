@@ -32,4 +32,10 @@ private static final long serialVersionUID = 1L;
 	private String nombre_rol;
 	   @OneToMany(mappedBy = "rol")
 	    List<Usuario> usuario;
+           
+           public Rol(){}
+           
+           public Rol(Long id_persona){
+               this.id_rol=id_persona;
+           }
 }

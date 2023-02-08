@@ -28,6 +28,8 @@ public class Usuario implements Serializable{
 	
 	 @Column (name = "id_usuario")
 	private Long id_usuario;
+        @Column (name = "user")
+	private String user;
 	 @Column (name = "password")
 	private String password;
 	
@@ -37,6 +39,5 @@ public class Usuario implements Serializable{
 	 @ManyToOne
 	    @JoinColumn (name = "id_rol", referencedColumnName = "id_rol")
 	    private Rol rol;
-	 @OneToMany(mappedBy = "usuario")
-	    List<Factura> factura;
+	 
 }
