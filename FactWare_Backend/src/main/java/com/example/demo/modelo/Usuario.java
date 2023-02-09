@@ -1,5 +1,7 @@
 package com.example.demo.modelo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,11 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,28 +21,37 @@ import lombok.Setter;
 @Table(name = "usuario")
 @Getter
 @Setter
-public class Usuario implements Serializable{
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	 @Column (name = "id_usuario")
-	private Long id_usuario;
-        @Column (name = "user")
-	private String user;
-	 @Column (name = "password")
-	private String password;
-	 @JsonManagedReference
-	    @JsonBackReference
+public class Usuario implements Serializable {
 
-	 @ManyToOne
-	    @JoinColumn (name = "id_persona", referencedColumnName = "id_persona")
-	    private Persona persona;
-	    @JsonBackReference
+    private static final long serialVersionUID = 1L;
 
-	 @ManyToOne
-	    @JoinColumn (name = "id_rol", referencedColumnName = "id_rol")
-	    private Rol rol;
-	 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Column(name = "id_usuario")
+    private Long id_usuario;
+    @Column(name = "user")
+    private String user;
+    @Column(name = "password")
+    private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")
+    private Persona persona;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
+    private Rol rol;
+    
+    public Usuario() {}
+
+    public Usuario(Long id_usuario, String user, String password, Persona persona, Rol rol) {
+        
+        this.id_usuario = id_usuario;
+        this.user = user;
+        this.password = password;
+        this.persona = persona;
+        this.rol = rol;
+    }
+
 }
