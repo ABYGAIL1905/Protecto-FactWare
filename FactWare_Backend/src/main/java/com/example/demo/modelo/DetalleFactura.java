@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,31 +18,46 @@ import lombok.Setter;
 @Table(name = "detallefact")
 @Getter
 @Setter
-public class DetalleFactura implements Serializable{
+public class DetalleFactura implements Serializable {
 
-private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	 @Column (name = "id_detalle")
-	private Long id_detalle;
-	
-	 @Column (name = "cantidad")
-	private int cantidad;
-	 
-	 @Column (name = "subTotal")
-	private double subTotal;
-	 
-	 @Column (name = "iva")
-	private double iva;
-	 
-	 @Column (name = "total")
-	private double total;
-	
-	 @ManyToOne
-	    @JoinColumn (name = "id_producto", referencedColumnName = "id_producto")
-	    private Producto producto;
-	 @ManyToOne
-	 @JoinColumn (name = "id_factura", referencedColumnName = "id_factura")
-	    private Factura factura;
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_detalle")
+    private Long id_detalle;
+
+    @Column(name = "cantidad")
+    private int cantidad;
+
+    @Column(name = "subTotal")
+    private double subTotal;
+
+    @Column(name = "iva")
+    private double iva;
+
+    @Column(name = "total")
+    private double total;
+
+    @ManyToOne
+    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
+    private Producto producto;
+    @ManyToOne
+    @JoinColumn(name = "id_factura", referencedColumnName = "id_factura")
+    private Factura factura;
+
+    public DetalleFactura() {
+    }
+
+    public DetalleFactura(Long id_detalle, int cantidad, double subTotal, double iva, double total, Producto producto, Factura factura) {
+        this.id_detalle = id_detalle;
+        this.cantidad = cantidad;
+        this.subTotal = subTotal;
+        this.iva = iva;
+        this.total = total;
+        this.producto = producto;
+        this.factura = factura;
+    }
+    
+    
 }

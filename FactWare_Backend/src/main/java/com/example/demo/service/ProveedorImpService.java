@@ -32,6 +32,7 @@ public class ProveedorImpService implements IProveedorService{
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
     	proveD.deleteById(id);
     }

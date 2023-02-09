@@ -52,7 +52,8 @@ public class RolControlador {
     
     //Eliminar Rol
     @DeleteMapping("/delR/{id}")
-    public void delete(Long id){
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id){
         sR.delete(id);
     }
 }   
