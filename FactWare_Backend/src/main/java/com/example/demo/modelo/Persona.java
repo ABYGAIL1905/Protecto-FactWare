@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,10 +50,11 @@ public class Persona implements Serializable{
 	 
 	 @Column (name = "correo_persona")
 	private String correo_persona;
-	
+	    @JsonManagedReference
+
 	 @OneToMany(mappedBy = "persona")
 	    List<Usuario> usuario;
-         
+	    @JsonManagedReference
          @OneToMany(mappedBy = "persona")
 	    List<Factura> factura;
          
@@ -60,5 +64,27 @@ public class Persona implements Serializable{
              super();
              this.id_persona=id;
          }
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
 	
 }

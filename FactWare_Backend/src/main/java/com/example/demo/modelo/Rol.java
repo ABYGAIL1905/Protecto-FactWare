@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,6 +32,8 @@ private static final long serialVersionUID = 1L;
 	
 	 @Column (name = "nombre_rol")
 	private String nombre_rol;
+	    @JsonBackReference
+
 	   @OneToMany(mappedBy = "rol")
 	    List<Usuario> usuario;
            

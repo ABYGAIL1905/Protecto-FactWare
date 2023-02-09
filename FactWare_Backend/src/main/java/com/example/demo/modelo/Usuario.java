@@ -13,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,10 +35,14 @@ public class Usuario implements Serializable{
 	private String user;
 	 @Column (name = "password")
 	private String password;
-	
+	 @JsonManagedReference
+	    @JsonBackReference
+
 	 @ManyToOne
 	    @JoinColumn (name = "id_persona", referencedColumnName = "id_persona")
 	    private Persona persona;
+	    @JsonBackReference
+
 	 @ManyToOne
 	    @JoinColumn (name = "id_rol", referencedColumnName = "id_rol")
 	    private Rol rol;
