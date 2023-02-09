@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -57,6 +60,7 @@ public class Persona implements Serializable {
     public Persona() {
     }
 
+    //relacion entre Id de Usuarios
     public Persona(Long id) {
         super();
         this.id_persona = id;
