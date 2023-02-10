@@ -57,6 +57,7 @@ public class Persona implements Serializable {
     public Persona() {
     }
 
+    //relacion entre Id de Usuarios
     public Persona(Long id) {
         super();
         this.id_persona = id;

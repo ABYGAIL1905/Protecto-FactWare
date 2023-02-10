@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,19 +19,36 @@ import lombok.Setter;
 @Table(name = "factura")
 @Getter
 @Setter
-public class Factura implements Serializable{
+public class Factura implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	 @Column (name = "id_factura")
-	private Long id_factura;
-	
-	 @Column (name = "fecha")
-	private Date fecha;
-	 @ManyToOne
-	  @JoinColumn (name = "id_persona", referencedColumnName = "id_persona")
-	    private Persona persona;
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Column(name = "id_factura")
+    private Long id_factura;
+
+    @Column(name = "fecha")
+    private Date fecha;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")
+    private Persona persona;
+
+    public Factura() {
+    }
+    
+    public Factura(Long id) {
+        super();
+        this.id_factura=id;
+    }
+
+    public Factura(Long id_factura, Date fecha, Persona persona) {
+        this.id_factura = id_factura;
+        this.fecha = fecha;
+        this.persona = persona;
+    }
+    
+    
 }

@@ -52,7 +52,7 @@ public class ProveedorControlador {
        Proveedor  proveedorN = sProv.findById(id);
        proveedorN.setDireccion_proveedor(proveedor.getDireccion_proveedor());
        proveedorN.setNombre_proveedor(proveedor.getNombre_proveedor());
-       proveedorN.setProducto(proveedor.getProducto());
+       //proveedorN.setProducto(proveedor.getProducto());
        proveedorN.setTelefono_proveedor(proveedor.getTelefono_proveedor());
         
         
@@ -61,7 +61,8 @@ public class ProveedorControlador {
 
     //Eliminar proveedor
     @DeleteMapping("delProve/{id}")
-    public void delete(Long id){
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id){
     	sProv.delete(id);
     }
  

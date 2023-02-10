@@ -61,7 +61,8 @@ public class PersonaControlador {
 
     //Eliminar Personar
     @DeleteMapping("delP/{id}")
-    public void delete(Long id){
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id){
         sP.delete(id);
     }
 }

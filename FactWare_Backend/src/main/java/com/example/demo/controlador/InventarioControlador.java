@@ -52,7 +52,7 @@ public class InventarioControlador {
       Inventario   inventarioN = sInvent.findById(id);
       inventarioN.setCantidad_inventario(inventario.getCantidad_inventario());
       inventarioN.setFechaEntrega(inventario.getFechaEntrega());
-      inventarioN.setProducto(inventario.getProducto());
+      //inventarioN.setProducto(inventario.getProducto());
       inventarioN.setStock(inventario.getStock());
         
         
@@ -61,7 +61,8 @@ public class InventarioControlador {
 
     //Eliminar inventario
     @DeleteMapping("delInvent/{id}")
-    public void delete(Long id){
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id){
     	sInvent.delete(id);
     } 
 }
