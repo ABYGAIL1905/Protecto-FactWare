@@ -1,14 +1,17 @@
 package com.example.demo.controlador;
 
 import com.example.demo.modelo.Usuario;
+import com.example.demo.repositorio.IUsuarioDao;
 import com.example.demo.service.IUsuarioService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +25,9 @@ public class UsuarioControlador {
 
     @Autowired
     private IUsuarioService sU;
+    
+    @Autowired
+    IUsuarioDao rU;
     
     //listar todos los usuarios
     @GetMapping("/listU")
@@ -57,4 +63,26 @@ public class UsuarioControlador {
     public void delete(@PathVariable Long id){
         sU.delete(id);
     }
+    
+    //Iniciar login
+    @PostMapping("/signin")
+	public ResponseEntity<?> IniciarSesion(@RequestBody Usuario usuario) throws Exception {
+		// COMPROBAR SI EXISTE EL NOMBRE DE USUARIO EN NUESTRA BD..
+		if (rU.existsByUser(usuario.getUser())) {
+
+			// COMPROBAR SI CONINCIDE USUARIO Y CONTRASEÑA EN NUESTRA BD..
+			if (rU.existsByPassword(usuario.getPassword())) {
+                                System.out.println(usuario.getUser()+" "+usuario.getPassword());
+				return null;
+
+			} else {
+
+				throw new Exception("Error: Datos Erroneos!");
+			}
+
+		} else {
+
+			throw new Exception("Error: Datos Erroneos!");
+		}
+	}
 }
