@@ -48,8 +48,79 @@ public class DetalleFactura implements Serializable {
 
     public DetalleFactura() {
     }
+    
 
-    public DetalleFactura(Long id_detalle, int cantidad, double subTotal, double iva, double total, Producto producto, Factura factura) {
+    public Long getId_detalle() {
+		return id_detalle;
+	}
+
+
+	public void setId_detalle(Long id_detalle) {
+		this.id_detalle = id_detalle;
+	}
+
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+
+	public double getSubTotal() {
+		return subTotal;
+	}
+
+
+	public void setSubTotal(double subTotal) {
+		this.subTotal = subTotal;
+	}
+
+
+	public double getIva() {
+		return iva;
+	}
+
+
+	public void setIva(double iva) {
+		this.iva = iva;
+	}
+
+
+	public double getTotal() {
+		return total;
+	}
+
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
+
+	public Producto getProducto() {
+		return producto;
+	}
+
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
+
+	public Factura getFactura() {
+		return factura;
+	}
+
+
+	public void setFactura(Factura factura) {
+		this.factura = factura;
+	}
+
+
+	public DetalleFactura(Long id_detalle, int cantidad, double subTotal, double iva, double total, Producto producto, Factura factura) {
         this.id_detalle = id_detalle;
         this.cantidad = cantidad;
         this.subTotal = subTotal;

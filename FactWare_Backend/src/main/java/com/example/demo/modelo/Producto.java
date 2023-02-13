@@ -84,5 +84,96 @@ public class Producto implements Serializable {
         this.estadoIVA_producto = estadoIVA_producto;
         this.proveedor = proveedor;
     }
+
+
+	public Long getId_producto() {
+		return id_producto;
+	}
+
+
+	public void setId_producto(Long id_producto) {
+		this.id_producto = id_producto;
+	}
+
+
+	public String getNombre_producto() {
+		return nombre_producto;
+	}
+
+
+	public void setNombre_producto(String nombre_producto) {
+		this.nombre_producto = nombre_producto;
+	}
+
+
+	public String getDescripcion_producto() {
+		return descripcion_producto;
+	}
+
+
+	public void setDescripcion_producto(String descripcion_producto) {
+		this.descripcion_producto = descripcion_producto;
+	}
+
+
+	public int getCodigoBarras_producto() {
+		return codigoBarras_producto;
+	}
+
+
+	public void setCodigoBarras_producto(int codigoBarras_producto) {
+		this.codigoBarras_producto = codigoBarras_producto;
+	}
+
+
+	public Double getCosto_producto() {
+		return costo_producto;
+	}
+
+
+	public void setCosto_producto(Double costo_producto) {
+		this.costo_producto = costo_producto;
+	}
+
+
+	public Double getPvp_producto() {
+		return pvp_producto;
+	}
+
+
+	public void setPvp_producto(Double pvp_producto) {
+		this.pvp_producto = pvp_producto;
+	}
+
+
+	public Double getUtilidad_producto() {
+		return utilidad_producto;
+	}
+
+
+	public void setUtilidad_producto(Double utilidad_producto) {
+		this.utilidad_producto = utilidad_producto;
+	}
+
+
+	public String getEstadoIVA_producto() {
+		return estadoIVA_producto;
+	}
+
+
+	public void setEstadoIVA_producto(String estadoIVA_producto) {
+		this.estadoIVA_producto = estadoIVA_producto;
+	}
+
+
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+
+
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}
+    
     
 }
