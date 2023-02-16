@@ -8,6 +8,7 @@ import com.example.demo.modelo.Usuario;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
@@ -20,7 +21,11 @@ public interface IUsuarioDao extends JpaRepository<Usuario, Long>{
     Boolean existsByUser(String user);
 
     @Query(value = "SELECT * FROM usuario WHERE user = ?", nativeQuery = true)
-    public abstract List<Usuario> buscarUsuario(String user);
+    public List<Usuario> buscarUsuario(String user);
+    
+    //SELECT rol.nombre_rol FROM usuario INNER JOIN rol ON usuario.id_rol=rol.id_rol AND usuario.user = :user AND usuario.password = :password
+    @Query(value = "SELECT * FROM usuario WHERE usuario.user = :user AND usuario.password = :password",nativeQuery = true)
+    public Usuario buscarRol(@Param("user") String user,@Param("password") String password);
 
     public boolean existsByPassword(String contrasenia);
 }
