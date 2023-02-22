@@ -23,66 +23,108 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class UsuarioControlador {
 
+    private String usu;
+    private String pas;
+
     @Autowired
     private IUsuarioService sU;
-    
+
     @Autowired
     IUsuarioDao rU;
-    
+
     //listar todos los usuarios
     @GetMapping("/listU")
-    public List<Usuario> index(){
+    public List<Usuario> index() {
         return sU.findAll();
     }
-    
+
     //Buscar un usuario
     @GetMapping("/buscU/{id}")
-    public Usuario findById(Long id){
+    public Usuario findById(Long id) {
         return sU.findById(id);
     }
-    
+
     //Guardar
     @PutMapping("/savU")
     @ResponseStatus(HttpStatus.CREATED)
-    public Usuario save(@RequestBody Usuario usuario){
+    public Usuario save(@RequestBody Usuario usuario) {
         return sU.save(usuario);
     }
-    
+
     //Modificar Usuario
     @PutMapping("/modiU/{id}")
-    public Usuario update(@RequestBody Usuario usuario, @PathVariable Long id){
+    public Usuario update(@RequestBody Usuario usuario, @PathVariable Long id) {
         Usuario usuarioN = sU.findById(id);
         usuarioN.setUser(usuario.getUser());
         usuarioN.setPassword(usuario.getPassword());
         return sU.save(usuarioN);
     }
-    
+
     //Eliminar Usuario
     @DeleteMapping("/delU/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id) {
         sU.delete(id);
     }
-    
+
     //Iniciar login
     @PostMapping("/signin")
-	public ResponseEntity<?> IniciarSesion(@RequestBody Usuario usuario) throws Exception {
-		// COMPROBAR SI EXISTE EL NOMBRE DE USUARIO EN NUESTRA BD..
-		if (rU.existsByUser(usuario.getUser())) {
+    public Usuario IniciarSesion(@RequestBody Usuario usuario) throws Exception {
 
-			// COMPROBAR SI CONINCIDE USUARIO Y CONTRASEÑA EN NUESTRA BD..
-			if (rU.existsByPassword(usuario.getPassword())) {
-                                System.out.println(usuario.getUser()+" "+usuario.getPassword());
-				return null;
+//        usu="";
+//        pas="";
 
-			} else {
+        try {
+            Usuario usr = rU.buscarRol(usuario.getUser(), usuario.getPassword());
+           return usr;
+            
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            return null;
+        }
+        
+        
 
-				throw new Exception("Error: Datos Erroneos!");
-			}
+//        // COMPROBAR SI EXISTE EL NOMBRE DE USUARIO EN NUESTRA BD..
+//        if (rU.existsByUser(usuario.getUser())) {
+//
+//            // COMPROBAR SI CONINCIDE USUARIO Y CONTRASEÑA EN NUESTRA BD..
+//            if (rU.existsByPassword(usuario.getPassword())) {
+//                usu=usuario.getUser();
+//                pas=usuario.getPassword();
+//                System.out.println(usuario.getUser() + " " + usuario.getPassword());
+//                return ;
+//
+//            } else {
+//
+//                throw new Exception("Error: Datos Erroneos!");
+//            }
+//
+//        } else {
+//
+//            throw new Exception("Error: Datos Erroneos!");
+//        }
+    }
 
-		} else {
+    @GetMapping("/rol")
+    public Usuario BuscarRol() throws Exception {
+        // COMPROBAR SI EXISTE EL NOMBRE DE USUARIO EN NUESTRA BD..
+        if (rU.existsByUser(usu)) {
 
-			throw new Exception("Error: Datos Erroneos!");
-		}
-	}
+            // COMPROBAR SI CONINCIDE USUARIO Y CONTRASEÑA EN NUESTRA BD..
+            if (rU.existsByPassword(pas)) {
+
+                System.out.println(usu + " " + pas + " " + rU.buscarRol(usu, pas));
+                return rU.buscarRol(usu, pas);
+
+            } else {
+
+                throw new Exception("Error: Datos Erroneos!");
+            }
+
+        } else {
+
+            throw new Exception("Error: Datos Erroneos!");
+        }
+    }
 }
