@@ -48,71 +48,13 @@ public class Persona implements Serializable {
     @Column(name = "correo_persona")
     private String correo_persona;
 
-    
-    
 //    @OneToMany(mappedBy = "persona")
 //    List<Usuario> usuario;
 //
 //    @OneToMany(mappedBy = "persona")
 //    List<Factura> factura;
 
-    public Long getId_persona() {
-		return id_persona;
-	}
-
-	public void setId_persona(Long id_persona) {
-		this.id_persona = id_persona;
-	}
-
-	public String getCedula() {
-		return cedula;
-	}
-
-	public void setCedula(String cedula) {
-		this.cedula = cedula;
-	}
-
-	public String getNombre_persona() {
-		return nombre_persona;
-	}
-
-	public void setNombre_persona(String nombre_persona) {
-		this.nombre_persona = nombre_persona;
-	}
-
-	public String getApellido_persona() {
-		return apellido_persona;
-	}
-
-	public void setApellido_persona(String apellido_persona) {
-		this.apellido_persona = apellido_persona;
-	}
-
-	public String getDireccion_persona() {
-		return direccion_persona;
-	}
-
-	public void setDireccion_persona(String direccion_persona) {
-		this.direccion_persona = direccion_persona;
-	}
-
-	public String getTelefono_persona() {
-		return telefono_persona;
-	}
-
-	public void setTelefono_persona(String telefono_persona) {
-		this.telefono_persona = telefono_persona;
-	}
-
-	public String getCorreo_persona() {
-		return correo_persona;
-	}
-
-	public void setCorreo_persona(String correo_persona) {
-		this.correo_persona = correo_persona;
-	}
-
-	public Persona() {
+    public Persona() {
     }
 
     //relacion entre Id de Usuarios
