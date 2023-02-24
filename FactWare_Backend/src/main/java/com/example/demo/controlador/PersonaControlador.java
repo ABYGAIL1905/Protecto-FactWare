@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,12 +33,12 @@ public class PersonaControlador {
     
     //Buscar una persona
     @GetMapping("/busc/{id}")
-    public Persona findById(Long id){
+    public Persona findById(@PathVariable Long id){
         return sP.findById(id);
     }
     
     //Guardar
-    @PutMapping("/savP")
+    @PostMapping("/savP")
     @ResponseStatus(HttpStatus.CREATED)
     public Persona save(@RequestBody Persona persona){
         return sP.save(persona);
