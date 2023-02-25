@@ -31,7 +31,7 @@ public class RolControlador {
     
     //Buscar un rol
     @GetMapping("buc/{id}")
-    public Rol findById(Long id){
+    public Rol findById(@PathVariable Long id){
         return sR.findById(id);
     }
     

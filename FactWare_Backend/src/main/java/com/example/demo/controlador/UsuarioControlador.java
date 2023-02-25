@@ -40,7 +40,7 @@ public class UsuarioControlador {
 
     //Buscar un usuario
     @GetMapping("/buscU/{id}")
-    public Usuario findById(Long id) {
+    public Usuario findById(@PathVariable Long id) {
         return sU.findById(id);
     }
 

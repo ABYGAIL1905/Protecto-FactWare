@@ -31,7 +31,7 @@ public class FacturaControlador {
 
     //Buscar un usuario
     @GetMapping("/buscF/{id}")
-    public Factura findById(Long id) {
+    public Factura findById(@PathVariable Long id) {
         return sF.findById(id);
     }
 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.modelo.Proveedor;
 import com.example.demo.service.IProveedorService;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 
@@ -35,12 +36,12 @@ public class ProveedorControlador {
     
     //Buscar una persona
     @GetMapping("/buscProve/{id}")
-    public Proveedor findById(Long id){
+    public Proveedor findById(@PathVariable Long id){
         return sProv.findById(id);
     }
     
     //Guardar proveedor
-    @PutMapping("/savProve")
+    @PostMapping("/savProve")
     @ResponseStatus(HttpStatus.CREATED)
     public Proveedor save(@RequestBody Proveedor proveedor){
         return sProv.save(proveedor);

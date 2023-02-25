@@ -35,7 +35,7 @@ public class InventarioControlador {
     
     //Buscar inventaro
     @GetMapping("/buscInvent/{id}")
-    public Inventario findById(Long id){
+    public Inventario findById(@PathVariable Long id){
         return sInvent.findById(id);
     }
     
