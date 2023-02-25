@@ -47,7 +47,7 @@ public class ProductoControlador {
 	 
 	 //buscar
 	 @GetMapping("/{id}")
-	    public Producto findById(Long id){
+	    public Producto findById(@PathVariable Long id){
 	        return productoService.findById(id);
 	    }
 	 

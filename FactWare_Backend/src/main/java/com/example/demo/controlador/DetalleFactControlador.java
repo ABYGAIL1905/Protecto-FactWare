@@ -31,7 +31,7 @@ public class DetalleFactControlador {
 
     //Buscar un usuario
     @GetMapping("/buscD/{id}")
-    public DetalleFactura findById(Long id) {
+    public DetalleFactura findById(@PathVariable Long id) {
         return sD.findById(id);
     }
 
