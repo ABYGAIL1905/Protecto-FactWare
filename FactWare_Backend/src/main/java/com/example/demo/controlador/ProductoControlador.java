@@ -54,7 +54,7 @@ public class ProductoControlador {
 	 
 	 
 	 //Guardar
-	    @PutMapping("/savPr")
+	    @PostMapping("/savPr")
 	    @ResponseStatus(HttpStatus.CREATED)
 	    public Producto save(@RequestBody Producto producto){
 	        return productoService.save(producto);
