@@ -45,7 +45,7 @@ public class UsuarioControlador {
     }
 
     //Guardar
-    @PutMapping("/savU")
+    @PostMapping("/savU")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario save(@RequestBody Usuario usuario) {
         return sU.save(usuario);

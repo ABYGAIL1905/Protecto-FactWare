@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.modelo.Inventario;
 import com.example.demo.service.IInventarioService;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 
@@ -40,7 +41,7 @@ public class InventarioControlador {
     }
     
     //Guardar inventario
-    @PutMapping("/savInvent")
+    @PostMapping("/savInvent")
     @ResponseStatus(HttpStatus.CREATED)
     public Inventario  save(@RequestBody Inventario  inventario ){
         return sInvent.save(inventario );
