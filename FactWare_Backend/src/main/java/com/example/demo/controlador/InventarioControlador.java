@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.modelo.Inventario;
 import com.example.demo.service.IInventarioService;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 
