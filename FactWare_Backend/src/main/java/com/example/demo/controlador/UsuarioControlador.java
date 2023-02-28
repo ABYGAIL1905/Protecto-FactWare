@@ -40,12 +40,12 @@ public class UsuarioControlador {
 
     //Buscar un usuario
     @GetMapping("/buscU/{id}")
-    public Usuario findById(Long id) {
+    public Usuario findById(@PathVariable Long id) {
         return sU.findById(id);
     }
 
     //Guardar
-    @PutMapping("/savU")
+    @PostMapping("/savU")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario save(@RequestBody Usuario usuario) {
         return sU.save(usuario);
