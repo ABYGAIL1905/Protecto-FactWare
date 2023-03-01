@@ -1,7 +1,10 @@
 package com.example.demo.controlador;
 
 import com.example.demo.modelo.DetalleFactura;
+import com.example.demo.modelo.Producto;
+import com.example.demo.repositorio.IDetalleFactRepositorio;
 import com.example.demo.service.IDetalleFacService;
+import com.example.demo.service.IProductoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +27,12 @@ public class DetalleFactControlador {
     @Autowired
     private IDetalleFacService sD;
     
+    @Autowired
+    private IProductoService sPro;
+    
+    @Autowired
+    private IDetalleFactRepositorio rDet;
+    
     //listar todos los usuarios
     @GetMapping("/listD")
     public List<DetalleFactura> index() {
@@ -40,6 +49,9 @@ public class DetalleFactControlador {
     @PostMapping("/savD")
     @ResponseStatus(HttpStatus.CREATED)
     public DetalleFactura save(@RequestBody DetalleFactura detalleFactura) {
+        Producto p = sPro.findById(detalleFactura.getProducto().getId_producto());
+        p.setStock(p.getStock()-detalleFactura.getCantidad());
+        sPro.save(p);
         return sD.save(detalleFactura);
     }
 

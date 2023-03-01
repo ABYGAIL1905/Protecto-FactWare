@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.modelo.Inventario;
+import com.example.demo.modelo.Producto;
+import com.example.demo.repositorio.IInventarioRepositorio;
 import com.example.demo.service.IInventarioService;
+import com.example.demo.service.IProductoService;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -27,6 +30,12 @@ public class InventarioControlador {
 
  @Autowired
     private IInventarioService sInvent;
+ 
+ @Autowired
+ private IProductoService sPro;
+ 
+ @Autowired
+ private IInventarioRepositorio  rIn;
     
     //listar  inventario
     @GetMapping("/lisInvent")
@@ -44,6 +53,11 @@ public class InventarioControlador {
     @PostMapping("/savInvent")
     @ResponseStatus(HttpStatus.CREATED)
     public Inventario  save(@RequestBody Inventario  inventario ){
+        System.out.println(""+inventario.getProducto().getId_producto().toString());
+        //int stockActual = rIn.stockProd(inventario.getProducto().getId_producto());
+        Producto p = sPro.findById(inventario.getProducto().getId_producto());
+        p.setStock(inventario.getCantidad_inventario()+p.getStock());
+        sPro.save(p);
         return sInvent.save(inventario );
     }
     
@@ -53,8 +67,7 @@ public class InventarioControlador {
       Inventario   inventarioN = sInvent.findById(id);
       inventarioN.setCantidad_inventario(inventario.getCantidad_inventario());
       inventarioN.setFechaEntrega(inventario.getFechaEntrega());
-      //inventarioN.setProducto(inventario.getProducto());
-      inventarioN.setStock(inventario.getStock());
+      inventarioN.setProducto(inventario.getProducto());
         
         
         return sInvent.save(inventarioN);
