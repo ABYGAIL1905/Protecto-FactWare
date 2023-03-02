@@ -25,9 +25,12 @@ public class Factura implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "id_factura")
     private Long id_factura;
+    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "num_factura")
+    private int numeroFact;
 
     @Column(name = "fecha")
     private Date fecha;
@@ -44,8 +47,9 @@ public class Factura implements Serializable {
         this.id_factura=id;
     }
 
-    public Factura(Long id_factura, Date fecha, Persona persona) {
+    public Factura(Long id_factura, int numeroFact, Date fecha, Persona persona) {
         this.id_factura = id_factura;
+        this.numeroFact = numeroFact;
         this.fecha = fecha;
         this.persona = persona;
     }

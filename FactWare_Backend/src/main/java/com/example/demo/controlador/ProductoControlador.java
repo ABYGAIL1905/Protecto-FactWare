@@ -73,6 +73,7 @@ public class ProductoControlador {
 	    	prod.setPvp_producto(producto.getPvp_producto());
 	    	prod.setUtilidad_producto(producto.getUtilidad_producto());
 	    	prod.setEstadoIVA_producto(producto.getEstadoIVA_producto());
+                prod.setStock(producto.getStock());
 	    	
 	    	
 	        

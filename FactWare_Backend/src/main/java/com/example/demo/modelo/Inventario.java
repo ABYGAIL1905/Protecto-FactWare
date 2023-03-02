@@ -32,9 +32,6 @@ public class Inventario implements Serializable {
     @Column(name = "cantidad_inventario")
     private int cantidad_inventario;
 
-    @Column(name = "stock")
-    private int stock;
-
     @Column(name = "fechaEntrega")
     private Date fechaEntrega;
 
@@ -42,18 +39,8 @@ public class Inventario implements Serializable {
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
     private Producto producto;
 
-    public Inventario() {
-    }
-
-    public Inventario(Long id_inventario, int cantidad_inventario, int stock, Date fechaEntrega, Producto producto) {
-        this.id_inventario = id_inventario;
-        this.cantidad_inventario = cantidad_inventario;
-        this.stock = stock;
-        this.fechaEntrega = fechaEntrega;
-        this.producto = producto;
-    }
-
-	public Long getId_inventario() {
+    
+    public Long getId_inventario() {
 		return id_inventario;
 	}
 
@@ -67,14 +54,6 @@ public class Inventario implements Serializable {
 
 	public void setCantidad_inventario(int cantidad_inventario) {
 		this.cantidad_inventario = cantidad_inventario;
-	}
-
-	public int getStock() {
-		return stock;
-	}
-
-	public void setStock(int stock) {
-		this.stock = stock;
 	}
 
 	public Date getFechaEntrega() {
@@ -92,7 +71,16 @@ public class Inventario implements Serializable {
 	public void setProducto(Producto producto) {
 		this.producto = producto;
 	}
-    
+
+	public Inventario() {
+    }
+
+    public Inventario(Long id_inventario, int cantidad_inventario, Date fechaEntrega, Producto producto) {
+        this.id_inventario = id_inventario;
+        this.cantidad_inventario = cantidad_inventario;
+        this.fechaEntrega = fechaEntrega;
+        this.producto = producto;
+    }
     
     
 }
