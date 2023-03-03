@@ -59,11 +59,20 @@ public class Producto implements Serializable {
 //    @JsonIgnore
 //    @OneToMany(mappedBy = "producto")
 //    List<DetalleFactura> detalle_factura;
+    
     public Long getId_producto() {
         return id_producto;
     }
 
-    public void setId_producto(Long id_producto) {
+    public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
+	public void setId_producto(Long id_producto) {
         this.id_producto = id_producto;
     }
 
