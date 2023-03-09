@@ -9,5 +9,9 @@ import org.springframework.data.repository.query.Param;
 public interface IDetalleFactRepositorio extends JpaRepository<DetalleFactura, Long>{
 
     @Query(value = "SELECT * FROM detallefact WHERE id_factura = :id",nativeQuery = true)
-    public List<DetalleFactura> buscarFactura(@Param("id") Long id);   
+    public List<DetalleFactura> buscarFactura(@Param("id") Long id);  
+    
+    @Query(value = "SELECT * FROM detallefact WHERE cantidad >= 20;",nativeQuery = true)
+    public List<DetalleFactura> busque();
+    
 }
