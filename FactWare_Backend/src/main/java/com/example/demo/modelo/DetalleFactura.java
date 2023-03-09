@@ -125,7 +125,7 @@ public class DetalleFactura implements Serializable {
         this.cantidad = cantidad;
         this.subTotal = subTotal;
         this.iva = iva;
-        this.total = total;
+        this.total = Math.round(total*100)/100;
         this.producto = producto;
         this.factura = factura;
     }
