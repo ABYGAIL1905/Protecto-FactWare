@@ -1,5 +1,6 @@
 package com.example.demo.controlador;
 
+import com.example.demo.modelo.DetalleFactura;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.modelo.Persona;
 import com.example.demo.modelo.Producto;
+import com.example.demo.repositorio.IDetalleFactRepositorio;
+import com.example.demo.repositorio.IProductoRepositorio;
 import com.example.demo.service.IProductoService;
 
 
@@ -31,6 +34,12 @@ public class ProductoControlador {
 
 	@Autowired
 	private IProductoService productoService;
+        
+        @Autowired
+        private IProductoRepositorio rPro;
+        
+        @Autowired
+        private IDetalleFactRepositorio rDet;
 	
 	
 	//crear
@@ -86,6 +95,18 @@ public class ProductoControlador {
 	    public void delete(@PathVariable Long id){
 	    	productoService.delete(id);
 	    }
+            
+            
+            //Listar lo que tengan stoc menor
+            @GetMapping("/lisStoc")
+	    public List<Producto> stoc(){
+	        return rPro.buscarProduc();
+	    }
 	 
 	 
+            //listar para el mas vendido
+            @GetMapping("/masVendido")
+            public List<DetalleFactura> vendido(){
+                return rDet.busque();
+            }
 }
