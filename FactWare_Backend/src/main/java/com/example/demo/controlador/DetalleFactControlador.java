@@ -1,10 +1,14 @@
 package com.example.demo.controlador;
 
 import com.example.demo.modelo.DetalleFactura;
+import com.example.demo.modelo.Producto;
+import com.example.demo.repositorio.IDetalleFactRepositorio;
 import com.example.demo.service.IDetalleFacService;
+import com.example.demo.service.IProductoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +28,12 @@ public class DetalleFactControlador {
     @Autowired
     private IDetalleFacService sD;
     
+    @Autowired
+    private IProductoService sPro;
+    
+    @Autowired
+    private IDetalleFactRepositorio rDet;
+    
     //listar todos los usuarios
     @GetMapping("/listD")
     public List<DetalleFactura> index() {
@@ -40,6 +50,9 @@ public class DetalleFactControlador {
     @PostMapping("/savD")
     @ResponseStatus(HttpStatus.CREATED)
     public DetalleFactura save(@RequestBody DetalleFactura detalleFactura) {
+        Producto p = sPro.findById(detalleFactura.getProducto().getId_producto());
+        p.setStock(p.getStock()-detalleFactura.getCantidad());
+        sPro.save(p);
         return sD.save(detalleFactura);
     }
 
@@ -60,5 +73,20 @@ public class DetalleFactControlador {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         sD.delete(id);
+    }
+    
+    //Filtar por Factura
+    @GetMapping("/detafact/{id}")
+    public List<DetalleFactura> findByIdFact(@PathVariable Long id) {
+        
+        return rDet.buscarFactura(id);
+    }
+    
+    @PostMapping("/restau")
+    public ResponseEntity<?> restaurarStock(@RequestBody DetalleFactura detalle) {
+        Producto p = sPro.findById(detalle.getProducto().getId_producto());
+        p.setStock(p.getStock()+detalle.getCantidad());
+        sPro.save(p);
+        return ResponseEntity.ok(detalle);
     }
 }
