@@ -55,6 +55,9 @@ public class Producto implements Serializable {
 
     @Column(name = "stock")
     private int stock;
+    
+    @Column(name = "constIva")
+    private Boolean constIva;
 
 //    @JsonIgnore
 //    @OneToMany(mappedBy = "producto")
@@ -155,7 +158,7 @@ public class Producto implements Serializable {
         this.id_producto = id;
     }
 
-    public Producto(Long id_producto, String nombre_producto, String descripcion_producto, int codigoBarras_producto, Double costo_producto, Double pvp_producto, Double utilidad_producto, String estadoIVA_producto, Proveedor proveedor) {
+    public Producto(Long id_producto, String nombre_producto, String descripcion_producto, int codigoBarras_producto, Double costo_producto, Double pvp_producto, Double utilidad_producto, String estadoIVA_producto, int stock, Boolean constIva, Proveedor proveedor) {
         this.id_producto = id_producto;
         this.nombre_producto = nombre_producto;
         this.descripcion_producto = descripcion_producto;
@@ -164,6 +167,8 @@ public class Producto implements Serializable {
         this.pvp_producto = pvp_producto;
         this.utilidad_producto = utilidad_producto;
         this.estadoIVA_producto = estadoIVA_producto;
+        this.stock = stock;
+        this.constIva = constIva;
         this.proveedor = proveedor;
     }
 
